@@ -23,14 +23,14 @@
 	},
         "storageAccountNewOrExisting" : {
             "type": "string",
-            "defaultValue" : "new",
             "allowedValues" : [
                 "new",
                 "existing"
             ],
             "metadata": {
                 "Description": "Indicates whether the Storage Account is new or existing"
-            }
+            },
+	    "defaultValue":"new"
         },
         "existingStorageAccountRG": {
             "type": "string",
@@ -421,20 +421,17 @@
         "name": "[concat(variables('nicName'), '4')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]",
             "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
         ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '4')]"
         },
         "properties": {
+            "enableIPForwarding": true,
             "ipConfigurations": [{
                 "name": "[concat('ipconfig', '1')]",
                 "properties": {
                     "privateIPAllocationMethod": "Dynamic",
-                    "publicIPAddress": {
-                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fwpublicIPName'))]"
-                    },
                     "subnet": {
                         "id": "[variables(concat('subnet','1','Ref'))]"
                     }
@@ -448,20 +445,17 @@
         "name": "[concat(variables('nicName'), '5')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]",
             "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
         ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '5')]"
         },
         "properties": {
+            "enableIPForwarding": true,
             "ipConfigurations": [{
                 "name": "[concat('ipconfig', '2')]",
                 "properties": {
                     "privateIPAllocationMethod": "Dynamic",
-                    "publicIPAddress": {
-                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fwpublicIPName'))]"
-                    },
                     "subnet": {
                         "id": "[variables(concat('subnet','2','Ref'))]"
                     }

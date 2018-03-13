@@ -23,14 +23,14 @@
 	},
         "storageAccountNewOrExisting" : {
             "type": "string",
-            "defaultValue" : "new",
+            "metadata": {
+                "Description": "Indicates whether the Storage Account is new or existing"
+            },
             "allowedValues" : [
                 "new",
                 "existing"
             ],
-            "metadata": {
-                "Description": "Indicates whether the Storage Account is new or existing"
-            }
+            "defaultValue":"new"
         },
         "existingStorageAccountRG": {
             "type": "string",
@@ -113,7 +113,7 @@
                 "Standard_D4", 
 		"Standard_D4_v2",
 		"Standard_D5",
-	  	"Standard_D5_v2"
+	  	"Standard_D5_v2",
                 "Standard_A4"		    
             ],
             "metadata": {
